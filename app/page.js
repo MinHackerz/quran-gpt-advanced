@@ -270,6 +270,37 @@ export default function Home() {
           </div>
         </section>
 
+        {/* How to Use Section */}
+        <section id="how-it-works" className="mb-16">
+          <h2 className="text-3xl font-bold mb-8 text-center">How to Use</h2>
+          <div className="max-w-3xl mx-auto">
+            <ol className={`relative border-l ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+              {[
+                { title: 'Ask Your Question', description: 'Write your question in the "Ask your question..." field.' },
+                { title: 'Get Answer', description: 'Click the "Ask" button to get a relevant answer to your question.' },
+                { title: 'Copy Answer', description: 'Click the copy icon below the answer to copy it.' },
+              ].map((step, index) => (
+                <li key={index} className="mb-10 ml-6">
+                  <span className={`absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 ring-4 ${darkMode ? 'ring-gray-900 bg-purple-600' : 'ring-white bg-purple-100'}`}>
+                    {index + 1}
+                  </span>
+                  <h3 className="font-semibold text-xl mb-1">{step.title}</h3>
+                  <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>{step.description}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* Warning Section */}
+        <section className="mb-16">
+          <div className="max-w-3xl mx-auto p-6 bg-yellow-100 dark:bg-yellow-900 rounded-lg shadow-lg">
+            <p className="text-yellow-800 dark:text-yellow-200">
+              <strong>Warning:</strong> Responses may contain inaccuracies.
+            </p>
+          </div>
+        </section>
+
         {/* Contact Form Section */}
         <section className="py-12">
           <div className="text-center mb-8">
