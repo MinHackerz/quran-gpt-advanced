@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { Button, Textarea, Input } from '@nextui-org/react'
-import { MessageSquare, RefreshCcw, Moon, Sun, Send, Layout, Lock, BarChart, Users, Trash2, Copy } from 'lucide-react'
+import { MessageSquare, RefreshCcw, Moon, Sun, Send, Layout, Lock, BarChart, Users, Trash2, Copy, User, Bot } from 'lucide-react'
 import Link from 'next/link'
 
 // Contact component
@@ -165,7 +165,7 @@ export default function Home() {
   return (
     <div className={`min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors`}>
       {/* Compact Header */}
-      <header className="sticky top-4 z-50 mx-auto w-full max-w-4xl backdrop-blur-md bg-white/30 dark:bg-gray-800/30 border border-gray-200 dark:border-gray-700 shadow-lg rounded-xl">
+      <header className="mx-auto w-full max-w-4xl backdrop-blur-md bg-white/30 dark:bg-gray-800/30 border border-gray-200 dark:border-gray-700 shadow-lg rounded-xl">
         <div className="container flex justify-between items-center py-3 px-4">
           <div className="flex items-center space-x-4">
             <Link href="/" className="flex items-center">
@@ -199,15 +199,30 @@ export default function Home() {
               <p className="text-center text-gray-500 dark:text-gray-400">Ask a question to start the conversation.</p>
             )}
             {messages.map((message, index) => (
-              <div key={index} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+              <div key={index} className={`flex items-start space-x-4 ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                {message.sender === 'user' ? <User size={24} /> : <Bot size={24} />}
                 <div className={`max-w-xs p-3 my-2 rounded-lg ${message.sender === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100'} shadow-md`}>
-                  {message.text}
+                  <p className="font-bold">{message.sender === 'user' ? 'You' : 'Quran GPT'}</p>
+                  <p className="text-sm">
+                    {message.sender === 'ai' && (
+                      <>
+                        <strong>Allah (SWT) says in the Glorious Quran:</strong>
+                        <br />
+                        {message.text.quran}
+                        <br />
+                        <strong>Tafseer:</strong>
+                        <br />
+                        {message.text.tafseer}
+                      </>
+                    )}
+                    {message.sender === 'user' && message.text}
+                  </p>
                   {message.sender === 'ai' && (
                     <Button
                       size="sm"
                       variant="light"
                       className="ml-2"
-                      onClick={() => copyToClipboard(message.text)}
+                      onClick={() => copyToClipboard(message.text.tafseer)}
                     >
                       <Copy size={16} />
                     </Button>
