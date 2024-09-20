@@ -142,17 +142,11 @@ export default function Home() {
         body: JSON.stringify({ question: userMessage.text })
       })
       const data = await response.json()
-
-      // Check if data.answer is an object with quran and tafseer properties
-      const aiMessageText = typeof data.answer === 'object' && data.answer.quran && data.answer.tafseer
-        ? data.answer
-        : { quran: 'Error: Invalid response format', tafseer: '' }
-
-      const aiMessage = { sender: 'ai', text: aiMessageText }
+      const aiMessage = { sender: 'ai', text: data.answer }
       setMessages([...messages, userMessage, aiMessage])
     } catch (error) {
       console.error('Error:', error)
-      const errorMessage = { sender: 'ai', text: { quran: 'Something went wrong. Please try again later.', tafseer: '' } }
+      const errorMessage = { sender: 'ai', text: 'Something went wrong. Please try again later.' }
       setMessages([...messages, userMessage, errorMessage])
     }
 
@@ -205,30 +199,16 @@ export default function Home() {
               <p className="text-center text-gray-500 dark:text-gray-400">Ask a question to start the conversation.</p>
             )}
             {messages.map((message, index) => (
-              <div key={index} className={`flex items-start space-x-4 ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                {message.sender === 'user' ? <User size={24} /> : <Bot size={24} />}
+              <div key={index} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-xs p-3 my-2 rounded-lg ${message.sender === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100'} shadow-md`}>
-                  <p className="font-bold">{message.sender === 'user' ? 'You' : 'Quran GPT'}</p>
-                  <p className="text-sm">
-                    {message.sender === 'ai' && (
-                      <>
-                        <strong>Allah (SWT) says in the Glorious Quran:</strong>
-                        <br />
-                        {message.text.quran}
-                        <br />
-                        <strong>Tafseer:</strong>
-                        <br />
-                        {message.text.tafseer}
-                      </>
-                    )}
-                    {message.sender === 'user' && message.text}
-                  </p>
+                  {message.sender === 'user' ? <User className="inline-block mr-2" size={16} /> : <Bot className="inline-block mr-2" size={16} />}
+                  {message.text.replace(/<[^>]*>?/gm, '')}
                   {message.sender === 'ai' && (
                     <Button
                       size="sm"
                       variant="light"
                       className="ml-2"
-                      onClick={() => copyToClipboard(message.text.tafseer)}
+                      onClick={() => copyToClipboard(message.text.replace(/<[^>]*>?/gm, ''))}
                     >
                       <Copy size={16} />
                     </Button>
