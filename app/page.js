@@ -142,11 +142,17 @@ export default function Home() {
         body: JSON.stringify({ question: userMessage.text })
       })
       const data = await response.json()
-      const aiMessage = { sender: 'ai', text: data.answer }
+
+      // Check if data.answer is an object with quran and tafseer properties
+      const aiMessageText = typeof data.answer === 'object' && data.answer.quran && data.answer.tafseer
+        ? data.answer
+        : { quran: 'Error: Invalid response format', tafseer: '' }
+
+      const aiMessage = { sender: 'ai', text: aiMessageText }
       setMessages([...messages, userMessage, aiMessage])
     } catch (error) {
       console.error('Error:', error)
-      const errorMessage = { sender: 'ai', text: 'Something went wrong. Please try again later.' }
+      const errorMessage = { sender: 'ai', text: { quran: 'Something went wrong. Please try again later.', tafseer: '' } }
       setMessages([...messages, userMessage, errorMessage])
     }
 
