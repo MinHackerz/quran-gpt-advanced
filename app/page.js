@@ -246,8 +246,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Warning Section */}
-        <section className="mb-16">
+        {/* Warning Section - Moved here */}
+        <section className="my-8">
           <div className="max-w-3xl mx-auto p-6 bg-yellow-100 dark:bg-yellow-900 rounded-lg shadow-lg">
             <p className="text-yellow-800 dark:text-yellow-200">
               <strong>Warning:</strong> Responses may contain inaccuracies.
