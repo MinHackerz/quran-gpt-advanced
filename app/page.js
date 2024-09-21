@@ -246,10 +246,10 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Warning Section - Moved here */}
+        {/* Warning Section - Modified */}
         <section className="my-8">
-          <div className="max-w-3xl mx-auto p-6 bg-yellow-100 dark:bg-yellow-900 rounded-lg shadow-lg">
-            <p className="text-yellow-800 dark:text-yellow-200">
+          <div className="mx-auto w-full max-w-4xl backdrop-blur-md bg-yellow-100/70 dark:bg-yellow-900/70 border border-yellow-200 dark:border-yellow-700 shadow-lg rounded-xl p-4">
+            <p className="text-yellow-800 dark:text-yellow-200 text-center">
               <strong>Warning:</strong> Responses may contain inaccuracies.
             </p>
           </div>
@@ -301,7 +301,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact Form Section */}
+        {/* Contact Form Section - Modified */}
         <section className="py-12">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold">Contact Us</h2>
@@ -309,7 +309,9 @@ export default function Home() {
               Have any questions or feedback? Get in touch with us!
             </p>
           </div>
-          <Contact />
+          <div className="mx-auto w-full max-w-4xl backdrop-blur-md bg-white/30 dark:bg-gray-800/30 border border-gray-200 dark:border-gray-700 shadow-lg rounded-xl p-6">
+            <Contact />
+          </div>
         </section>
       </main>
 
