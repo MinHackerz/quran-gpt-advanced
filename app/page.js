@@ -259,7 +259,7 @@ export default function Home() {
               { icon: Layout, title: "User-friendly Design", description: "Intuitive interface for ease of use." },
               { icon: Lock, title: "Secure Information", description: "Your data is encrypted and safe." },
               { icon: BarChart, title: "Comprehensive Knowledge", description: "Covers a wide range of topics and queries." },
-              { icon: Users, title: "Community Driven", description: "Feedback from the community helps improve the answers." },
+              { icon: Github, title: "Open-Source", description: "It's publicly available on GitHub and anyone can Contribute" },
             ].map((feature, index) => (
               <div key={index} className="flex flex-col items-center text-center backdrop-blur-lg bg-white/40 dark:bg-gray-800/40 p-6 rounded-lg shadow-lg border border-white/20 dark:border-gray-700">
                 <feature.icon className="h-12 w-12 text-blue-500 mb-4" />
