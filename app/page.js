@@ -319,7 +319,7 @@ export default function Home() {
           <p className="text-sm text-gray-600 dark:text-gray-400">
             Made with ❤️ by{' '}
             <Link
-              href="https://www.linkedin.com/in/menajul-hoque/"
+              href="https://menajul.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 dark:text-blue-400 hover:underline"
