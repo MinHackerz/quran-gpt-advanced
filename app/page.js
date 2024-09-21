@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { Button, Textarea, Input } from '@nextui-org/react'
-import { MessageSquare, RefreshCcw, Moon, Sun, Send, Layout, Lock, BarChart, Users, Trash2, Copy, User, Bot } from 'lucide-react'
+import { MessageSquare, RefreshCcw, Moon, Sun, Send, Layout, Lock, BarChart, Users, Trash2, Copy, User, Bot, Github } from 'lucide-react'
 import Link from 'next/link'
 
 // Contact component
