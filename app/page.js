@@ -188,6 +188,13 @@ export default function Home() {
       {/* Main Chat Container */}
       <main className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="backdrop-blur-md bg-white/30 dark:bg-gray-800/30 shadow-xl rounded-xl p-6 border border-white/20 dark:border-gray-700">
+        {/* GitHub link and Open Source text */}
+          <div className="flex justify-center items-center mb-4">
+            <Link href="https://github.com/MinHackerz/quran-gpt-advanced/" target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+              <Github className="mr-2" size={24} />
+              <span>Proudly Open Source</span>
+            </Link>
+          </div>
           <h1 className="text-4xl font-bold text-center mb-4">Quran GPT</h1>
           <p className="text-center mb-8 text-gray-700 dark:text-gray-300">
             AI-powered Islamic knowledge base providing answers based on the Holy Quran.
